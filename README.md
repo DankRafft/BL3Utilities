@@ -13,7 +13,7 @@ Improve Borderlands 3 with some quality of life features. Tired of pressing mult
 * Auto Grenade Macro, enables you to hold a key and spam grenades (Moze players might like that)
 
 ## Install and Usage
-1. Install AutoHotkey﻿.
+1. Install [AutoHotkey](https://www.autohotkey.com/).
 2. Download BL3 Utilities script from the download page.
 3. Extract the archive anywhere you want, preferably in a location where you'll find it again.
 4. Run "BL3Utilities.ahk".
