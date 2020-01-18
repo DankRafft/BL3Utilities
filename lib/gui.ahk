@@ -69,7 +69,7 @@
     ; --- right pane ---
     ; title
     Gui, Font, s16
-    Gui, Add, Text, x650 y10 cRed, BL3 Utilities v5
+    Gui, Add, Text, x650 y10 cRed, BL3 Utilities v6
     Gui, Font, s9
     Gui, Add, Text, x650 y+1, by Dank Rafft
     ; buttons
@@ -136,6 +136,6 @@ KeyCodes(){
 }
 
 UpdateCheck(){
-    Run, https://www.nexusmods.com/borderlands3/mods/73
+    Run, https://github.com/DankRafft/BL3Utilities/releases
     return
 }

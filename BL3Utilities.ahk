@@ -2,7 +2,7 @@
 BL3 Utilities
 An AutoHotkey script
 Created by Dank Rafft
-https://www.nexusmods.com/borderlands3/mods/73
+https://github.com/DankRafft/BL3Utilities
 */
 
 ; global AutoHotkey functions
