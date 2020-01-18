@@ -1,0 +1,43 @@
+┌───────────────────────────────────────┐
+│ Changelog for Borderlands 3 Utilities │
+└───────────────────────────────────────┘
+
+
+v5:
+
+added 4th field for a custom application
+the delays for the slide macro can now be modified from within the UI
+updated all tooltips
+
+
+v4:
+
+restructured and optimized code
+rearranged UI elements
+new quit hotkey that allows for quickly exiting both the game and the script
+slightly increased the default keystroke delay from 50ms to 75ms (game session restart)
+adjusted delays for Auto Slide Macro
+the key for grenades can now be configured in case you changed the ingame binding
+all key/button dialogue fields now use an Edit element instead of Hotkey, this allows for more flexibility from within the UI (e.g. directly setting up mouse buttons and Shift/Control keys) but requires some knowledge of the key codes
+two new buttons:
+- open a list of key codes
+- open the tool's download page so you can check for updates
+
+
+v3:
+
+complete rework of the code
+GUI expanded with new options:
+- Auto-Start: When activating the checkbox Borderlands 3 is automatically started upon starting BL3 Utilities. Therefore the batch file is now redundant.
+- Custom Applications: You can run any program or file directly from within the GUI.
+
+
+v2:
+
+included a batch file that automatically and simultaneously starts the script and BL3
+you need to open it in a text editor and change the variables for the folders your game and the script are located in
+
+
+v1:
+
+release
