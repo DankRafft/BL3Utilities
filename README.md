@@ -14,7 +14,7 @@ Improve Borderlands 3 with some quality of life features. Tired of pressing mult
 
 ## Install and Usage
 1. Install [AutoHotkey](https://www.autohotkey.com/).
-2. Download BL3 Utilities script from the releases page.
+2. Download BL3 Utilities script from the [releases page](https://github.com/DankRafft/BL3Utilities/releases).
 3. Extract the archive anywhere you want, preferably in a location where you'll find it again.
 4. Run "BL3Utilities.ahk".
 5. Either double-click on the tray icon or right-click on it to open the Options menu. When in-game F10 (default, can be changed) works as well.
