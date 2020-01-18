@@ -1,4 +1,4 @@
-![logo|640x310,50%](https://github.com/DankRafft/BL3Utilities/blob/master/img/logo.jpg)
+![320x155,25%](https://github.com/DankRafft/BL3Utilities/blob/master/img/logo.jpg)
 
 # BL3Utilities
 An AutoHotkey script with several utility macros, fully configurable via graphical user interface.
