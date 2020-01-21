@@ -1,5 +1,5 @@
 # BL3Utilities
-An AutoHotkey script with several utility macros, fully configurable via graphical user interface.
+An AutoHotkey script for Borderlands 3 with several utility macros, fully configurable via graphical user interface.
 
 Improve Borderlands 3 with some quality of life features. Tired of pressing multiple buttons in quick succession? Having a physical handicap? Then this is for you.
 
