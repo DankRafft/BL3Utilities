@@ -3,6 +3,16 @@
 └───────────────────────────────────────┘
 
 
+v7:
+two new custom app slots
+rearranged GUI
+
+
+v6:
+
+Updated for GitHub release
+
+
 v5:
 
 added 4th field for a custom application
