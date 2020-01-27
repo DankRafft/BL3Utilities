@@ -13,6 +13,10 @@ Custom3Text_TT = %Custom1Text_TT%
 Custom3_TT = %Custom1_TT%
 Custom4Text_TT = %Custom1Text_TT%
 Custom4_TT = %Custom1_TT%
+Custom5Text_TT = %Custom1Text_TT%
+Custom5_TT = %Custom1_TT%
+Custom6Text_TT = %Custom1Text_TT%
+Custom6_TT = %Custom1_TT%
 ; restart
 HotkeyRestartActive_TT .= "Disable and enable the Restart hotkey.`nWhen disabled the assigned hotkey does nothing."
 HotkeyRestart_TT .= "Assign a hotkey that automatically restarts your current`ngame session. Refer to the key codes list to the right."

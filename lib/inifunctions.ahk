@@ -10,6 +10,8 @@
 	defaultProfile .= "Custom2=`n"
 	defaultProfile .= "Custom3=`n"
 	defaultProfile .= "Custom4=`n"
+	defaultProfile .= "Custom5=`n"
+	defaultProfile .= "Custom6=`n"
 	defaultProfile .= "[RestartGame]`n"
 	defaultProfile .= "HotkeyRestartActive=1`n"
 	defaultProfile .= "HotkeyRestart=F8`n"
@@ -50,6 +52,8 @@ UpdateHotkeys:
 	updsettings .= "Custom2=" . Custom2 . "`n"
 	updsettings .= "Custom3=" . Custom3 . "`n"
 	updsettings .= "Custom4=" . Custom4 . "`n"
+	updsettings .= "Custom5=" . Custom5 . "`n"
+	updsettings .= "Custom6=" . Custom6 . "`n"
 	updsettings .= "[RestartGame]`n"
 	updsettings .= "HotkeyRestartActive=" . HotkeyRestartActive . "`n"
 	updsettings .= "HotkeyRestart=" . HotkeyRestart . "`n"
@@ -104,6 +108,8 @@ readFromFile(){
 	IniRead, Custom2, %ini%, CustomApps, Custom2, %A_Space%
 	IniRead, Custom3, %ini%, CustomApps, Custom3, %A_Space%
 	IniRead, Custom4, %ini%, CustomApps, Custom4, %A_Space%
+	IniRead, Custom5, %ini%, CustomApps, Custom5, %A_Space%
+	IniRead, Custom6, %ini%, CustomApps, Custom6, %A_Space%
 	IniRead, HotkeyRestartActive, %ini%, RestartGame, HotkeyRestartActive
 	IniRead, HotkeyRestart, %ini%, RestartGame, HotkeyRestart, %A_Space%
 	IniRead, DelayKeys, %ini%, RestartGame, DelayKeys
