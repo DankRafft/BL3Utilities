@@ -5,7 +5,7 @@
 
 v8:
 introduced tabs
-the custom app config can now be found in the seond tab
+the custom app config can now be found in the second tab
 custom apps can now be started via configurable hotkey
 
 
