@@ -1,95 +1,108 @@
 ﻿createGUI(){
     global
-    Loop 6 {
+    Loop %appLoops% {
         SplitPath, Custom%A_Index%, Custom%A_Index%Split
     }
-    ; --- LEFT PANE ---
-    ; general
-    Gui, Add, GroupBox, w300 h100 cGreen, General
-    Gui, Add, Text, x30 yp+25 w150 h20 vHotkeyOptionsText gTooltip, User Interface Hotkey:
-    Gui, Add, Edit, x+10 yp-3 w100 h20 vHotkeyOptions, %HotkeyOptions%
-    Gui, Add, Checkbox, x30 yp+25 w100 h20 vAutoGame Checked%AutoGame%, BL3 Auto-Start
-    Gui, Add, Checkbox, x30 yp+25 w150 h20 vHotkeyQuitActive Checked%HotkeyQuitActive%, Quit Hotkey:
-    Gui, Add, Edit, x+10 yp-3 w100 h20 vHotkeyQuit, %HotkeyQuit%
-    ; restart
-    Gui, Add, GroupBox, x10 yp+50 w300 h100 cGreen, Restart Game Session
-    Gui, Add, Checkbox, x30 yp+22 w150 h20 vHotkeyRestartActive Checked%HotkeyRestartActive%, Restart Hotkey:
-    Gui, Add, Edit, x+10 yp-3 w100 h20 vHotkeyRestart, %HotkeyRestart%
-    Gui, Add, Text, x30 yp+30 w150 h20 vDelayKeysText gTooltip, Keystroke Delay (ms):
-    Gui, Add, Edit, x+10 yp-5 w100 h20 number limit4 vDelayKeys, %DelayKeys%
-    Gui, Add, Text, x30 yp+30 w150 h20 vDelayRestartText gTooltip, Restart Delay (ms):
-    Gui, Add, Edit, x+10 yp-5 w100 h20 number limit4 vDelayRestart, %DelayRestart%
+    ; gui variables
+    size1 := "w110 h20"
+    size2 := "w80 h20"
+    size3 := "w200 h20"
+    ; create tabs
+    Gui, Add, Tab2, w705 h255, Gameplay Macros|Custom Apps
+    ; gameplay macros
+    Gui, Tab, Gameplay Macros
+    ; game
+    Gui, Add, Text, %size1% 0x200 Section vHotkeyOptionsText gTooltip, User Interface Hotkey:
+    Gui, Add, Edit, ys %size2% vHotkeyOptions, %HotkeyOptions%
+    Gui, Add, Checkbox, xs %size1% vAutoGame Checked%AutoGame%, BL3 Auto-Start
+    Gui, Add, Checkbox, xs %size1% vHotkeyQuitActive Checked%HotkeyQuitActive%, Quit Hotkey:
+    Gui, Add, Edit, x+10 %size2% vHotkeyQuit, %HotkeyQuit%
+    GroupBox("game", "Script and UI Options", "HotkeyOptionsText|HotkeyOptions|AutoGame|HotkeyQuitActive|HotkeyQuit", "Green")
     ; slide
-    Gui, Add, GroupBox, x10 yp+50 w300 h175 cGreen, Auto Slide Macro
-    Gui, Add, Checkbox, x30 yp+22 w150 h20 vHotkeySlideActive Checked%HotkeySlideActive%, Slide Macro Hotkey:
-    Gui, Add, Edit, x+10 yp-3 w100 h20 vHotkeySlide, %HotkeySlide%
-    Gui, Add, Text, x30 yp+30 w150 h20 vKeySprintText gTooltip, Sprint Key:
-    Gui, Add, Edit, x+10 yp-5 w100 h20 vKeySprint, %KeySprint%
-    Gui, Add, Text, x30 yp+30 w150 h20 vKeyCrouchText gTooltip, Crouch Key:
-    Gui, Add, Edit, x+10 yp-5 w100 h20 vKeyCrouch, %KeyCrouch%
-    Gui, Add, Text, x30 yp+30 w150 h20 vDelaySprintText gTooltip, Sprint Delay (ms):
-    Gui, Add, Edit, x+10 yp-5 w100 h20 number limit4 vDelaySprint, %DelaySprint%
-    Gui, Add, Text, x30 yp+30 w150 h20 vDelayCrouchDownText gTooltip, Crouch Down Delay (ms):
-    Gui, Add, Edit, x+10 yp-5 w100 h20 number limit4 vDelayCrouchDown, %DelayCrouchDown%
-    Gui, Add, Text, x30 yp+30 w150 h20 vDelayCrouchUpText gTooltip, Crouch Up Delay (ms):
-    Gui, Add, Edit, x+10 yp-5 w100 h20 number limit4 vDelayCrouchUp, %DelayCrouchUp%
-    ; attack
-    Gui, Add, GroupBox, x10 yp+50 w300 h75 cGreen, Auto Attack Macro
-    Gui, Add, Checkbox, x30 yp+22 w150 h20 vHotkeyAttackActive Checked%HotkeyAttackActive%, Attack Macro Hotkey:
-    Gui, Add, Edit, x+10 yp-3 w100 h20 vHotkeyAttack, %HotkeyAttack%
-    Gui, Add, Text, x30 yp+30 w150 h20 vDelayAttackText gTooltip, Attack Delay (ms):
-    Gui, Add, Edit, x+10 yp-5 w100 h20 number limit4 vDelayAttack, %DelayAttack%
+    Gui, Add, Checkbox, ys %size1% Section vHotkeySlideActive Checked%HotkeySlideActive%, Macro Hotkey:
+    Gui, Add, Edit, ys %size2% vHotkeySlide, %HotkeySlide%
+    Gui, Add, Text, xs %size1% 0x200 vKeySprintText gTooltip, Sprint Key:
+    Gui, Add, Edit, x+10 %size2% vKeySprint, %KeySprint%
+    Gui, Add, Text, xs %size1% 0x200 vKeyCrouchText gTooltip, Crouch Key:
+    Gui, Add, Edit, x+10 %size2% vKeyCrouch, %KeyCrouch%
+    Gui, Add, Text, x+30 ys %size1% 0x200 Section vDelaySprintText gTooltip, Sprint Duration (ms):
+    Gui, Add, Edit, ys %size2% number limit4 vDelaySprint, %DelaySprint%
+    Gui, Add, Text, xs %size1% 0x200 vDelayCrouchDownText gTooltip, Crouch Down (ms):
+    Gui, Add, Edit, x+10 %size2% number limit4 vDelayCrouchDown, %DelayCrouchDown%
+    Gui, Add, Text, xs %size1% 0x200 vDelayCrouchUpText gTooltip, Crouch Up (ms):
+    Gui, Add, Edit, x+10 %size2% number limit4 vDelayCrouchUp, %DelayCrouchUp%
+    GroupBox("slide", "Slide Repeater Macro", "HotkeySlideActive|HotkeySlide|KeySprintText|KeySprint|KeyCrouchText|KeyCrouch|DelaySprintText|DelaySprint|DelayCrouchDownText|DelayCrouchDown|DelayCrouchUpText|DelayCrouchUp", "Green")
+    ; restart
+    Gui, Add, Checkbox, x22 y+10 %size1% Section vHotkeyRestartActive Checked%HotkeyRestartActive%, Restart Hotkey:
+    Gui, Add, Edit, ys %size2% vHotkeyRestart, %HotkeyRestart%
+    Gui, Add, Text, xs %size1% 0x200 vDelayKeysText gTooltip, Keystroke Delay (ms):
+    Gui, Add, Edit, x+10 %size2% number limit4 vDelayKeys, %DelayKeys%
+    Gui, Add, Text, xs %size1% 0x200 vDelayRestartText gTooltip, Restart Delay (ms):
+    Gui, Add, Edit, x+10 %size2% number limit4 vDelayRestart, %DelayRestart%
+    GroupBox("restart", "Restart Game Session", "HotkeyRestartActive|HotkeyRestart|DelayKeysText|DelayKeys|DelayRestartText|DelayRestart", "Green")
+    ; gun
+    Gui, Add, Checkbox, ys %size1% Section vHotkeyAttackActive Checked%HotkeyAttackActive%, Macro Hotkey:
+    Gui, Add, Edit, ys %size2% vHotkeyAttack, %HotkeyAttack%
+    Gui, Add, Text, xs %size1% 0x200 vDelayAttackText gTooltip, Attack Delay (ms):
+    Gui, Add, Edit, x+10 %size2% number limit4 vDelayAttack, %DelayAttack%
+    GroupBox("gun", "Gun Repeater Macro", "HotkeyAttackActive|HotkeyAttack|DelayAttackText|DelayAttack", "Green")
     ; grenade
-    Gui, Add, GroupBox, x10 yp+50 w300 h75 cGreen, Auto Grenade Macro
-    Gui, Add, Checkbox, x30 yp+22 w150 h20 vHotkeyGrenadeActive Checked%HotkeyGrenadeActive%, Grenade Macro Hotkey:
-    Gui, Add, Edit, x+10 yp-3 w100 h20 vHotkeyGrenade, %HotkeyGrenade%
-    Gui, Add, Text, x30 yp+30 w150 h20 vKeyGrenadeText gTooltip, Grenade Key:
-    Gui, Add, Edit, x+10 yp-5 w100 h20 vKeyGrenade, %KeyGrenade%
-    ; --- middle pane ---
-    ; custom 1
-    Gui, Add, GroupBox, x330 y6 w300 h85 cGreen, Custom Application #1
-    Gui, Add, Edit, x350 yp+22 w150 h20 ReadOnly vCustom1Text, %Custom1Split%
-    Gui, Add, Button, x+10 w100 h20 vCustom1 gCustomSelect, Select File
-    Gui, Add, Button, x350 yp+30 w260 h25 vCustom1Run gCustomRun, Run %Custom1Split%
-    ; custom 2
-    Gui, Add, GroupBox, x330 yp+50 w300 h85 cGreen, Custom Application #2
-    Gui, Add, Edit, x350 yp+22 w150 h20 ReadOnly vCustom2Text, %Custom2Split%
-    Gui, Add, Button, x+10 w100 h20 vCustom2 gCustomSelect, Select File
-    Gui, Add, Button, x350 yp+30 w260 h25 vCustom2Run gCustomRun, Run %Custom2Split%
-    ; custom 3
-    Gui, Add, GroupBox, x330 yp+50 w300 h85 cGreen, Custom Application #3
-    Gui, Add, Edit, x350 yp+22 w150 h20 ReadOnly vCustom3Text, %Custom3Split%
-    Gui, Add, Button, x+10 w100 h20 vCustom3 gCustomSelect, Select File
-    Gui, Add, Button, x350 yp+30 w260 h25 vCustom3Run gCustomRun, Run %Custom3Split%
-    ; custom 4
-    Gui, Add, GroupBox, x330 yp+50 w300 h85 cGreen, Custom Application #4
-    Gui, Add, Edit, x350 yp+22 w150 h20 ReadOnly vCustom4Text, %Custom4Split%
-    Gui, Add, Button, x+10 w100 h20 vCustom4 gCustomSelect, Select File
-    Gui, Add, Button, x350 yp+30 w260 h25 vCustom4Run gCustomRun, Run %Custom4Split%
-    ; custom 5
-    Gui, Add, GroupBox, x330 yp+50 w300 h85 cGreen, Custom Application #5
-    Gui, Add, Edit, x350 yp+22 w150 h20 ReadOnly vCustom5Text, %Custom5Split%
-    Gui, Add, Button, x+10 w100 h20 vCustom5 gCustomSelect, Select File
-    Gui, Add, Button, x350 yp+30 w260 h25 vCustom5Run gCustomRun, Run %Custom5Split%
-    ; custom 6
-    Gui, Add, GroupBox, x330 yp+50 w300 h85 cGreen, Custom Application #6
-    Gui, Add, Edit, x350 yp+22 w150 h20 ReadOnly vCustom6Text, %Custom6Split%
-    Gui, Add, Button, x+10 w100 h20 vCustom6 gCustomSelect, Select File
-    Gui, Add, Button, x350 yp+30 w260 h25 vCustom6Run gCustomRun, Run %Custom6Split%
-    ; --- right pane ---
-    ; title
-    Gui, Font, s16
-    Gui, Add, Text, x650 y10 cRed, BL3 Utilities v7
-    Gui, Font, s9
-    Gui, Add, Text, x650 y+1, by Dank Rafft
-    ; buttons
-    Gui, Font, 
-    Gui, Add, Button, x650 y+15 w150 h30 vUpdateCheck gUpdateCheck, Check for Updates
-    Gui, Add, Button, x650 y+10 w150 h30 vKeyCodes gKeyCodes, Show Key Codes
-    Gui, Add, Button, x650 y+10 w150 h30 vRestartScript gRestartScript, Restart Script
-    Gui, Add, Button, x650 y+10 w150 h30 vResetConfig gResetConfig, Reset Configuration
-    Gui, Font, s20
-    Gui, Add, Button, x650 y+10 w150 h50 default vUpdateHotkeys gUpdateHotkeys, Save
+    Gui, Add, Checkbox, ys %size1% Section vHotkeyGrenadeActive Checked%HotkeyGrenadeActive%, Macro Hotkey:
+    Gui, Add, Edit, ys %size2% vHotkeyGrenade, %HotkeyGrenade%
+    Gui, Add, Text, xs %size1% 0x200 vKeyGrenadeText gTooltip, Grenade Key:
+    Gui, Add, Edit, x+10 %size2% vKeyGrenade, %KeyGrenade%
+    GroupBox("grenade", "Grenade Repeater Macro", "HotkeyGrenadeActive|HotkeyGrenade|KeyGrenadeText|KeyGrenade", "Green")
+    ; custom apps
+    Gui, Tab, Custom Apps
+    ; app 1
+    Gui, Add, Edit, %size3% Section ReadOnly vCustom1Text, %Custom1Split%
+    Gui, Add, Button, xs %size1% vCustom1 gCustomSelect, Select File
+    Gui, Add, Button, x+10 %size2% vCustom1Run gCustomRun, Run
+    Gui, Add, Checkbox, xs %size1% vHotkeyApp1Active Checked%HotkeyApp1Active%, App #1 Hotkey:
+    Gui, Add, Edit, x+10 %size2% vHotkeyApp1, %HotkeyApp1%
+    GroupBox("app1", "App #1", "Custom1Text|Custom1|Custom1Run|HotkeyApp1Active|HotkeyApp1", "Green")
+    ; app 2
+    Gui, Add, Edit, ys %size3% Section ReadOnly vCustom2Text, %Custom2Split%
+    Gui, Add, Button, xs %size1% vCustom2 gCustomSelect, Select File
+    Gui, Add, Button, x+10 %size2% vCustom2Run gCustomRun, Run
+    Gui, Add, Checkbox, xs %size1% vHotkeyApp2Active Checked%HotkeyApp2Active%, App #2 Hotkey:
+    Gui, Add, Edit, x+10 %size2% vHotkeyApp2, %HotkeyApp2%
+    GroupBox("app2", "App #2", "Custom2Text|Custom2|Custom2Run|HotkeyApp2Active|HotkeyApp2", "Green")
+    ; app 3
+    Gui, Add, Edit, ys %size3% Section ReadOnly vCustom3Text, %Custom3Split%
+    Gui, Add, Button, xs %size1% vCustom3 gCustomSelect, Select File
+    Gui, Add, Button, x+10 %size2% vCustom3Run gCustomRun, Run
+    Gui, Add, Checkbox, xs %size1% vHotkeyApp3Active Checked%HotkeyApp3Active%, App #3 Hotkey:
+    Gui, Add, Edit, x+10 %size2% vHotkeyApp3, %HotkeyApp3%
+    GroupBox("app3", "App #3", "Custom3Text|Custom3|Custom3Run|HotkeyApp3Active|HotkeyApp3", "Green")
+    ; app 4
+    Gui, Add, Edit, x22 y+10 %size3% Section ReadOnly vCustom4Text, %Custom4Split%
+    Gui, Add, Button, xs %size1% vCustom4 gCustomSelect, Select File
+    Gui, Add, Button, x+10 %size2% vCustom4Run gCustomRun, Run
+    Gui, Add, Checkbox, xs %size1% vHotkeyApp4Active Checked%HotkeyApp4Active%, App #4 Hotkey:
+    Gui, Add, Edit, x+10 %size2% vHotkeyApp4, %HotkeyApp4%
+    GroupBox("app4", "App #4", "Custom4Text|Custom4|Custom4Run|HotkeyApp4Active|HotkeyApp4", "Green")
+    ; app 5
+    Gui, Add, Edit, ys %size3% Section ReadOnly vCustom5Text, %Custom5Split%
+    Gui, Add, Button, xs %size1% vCustom5 gCustomSelect, Select File
+    Gui, Add, Button, x+10 %size2% vCustom5Run gCustomRun, Run
+    Gui, Add, Checkbox, xs %size1% vHotkeyApp5Active Checked%HotkeyApp5Active%, App #5 Hotkey:
+    Gui, Add, Edit, x+10 %size2% vHotkeyApp5, %HotkeyApp5%
+    GroupBox("app5", "App #5", "Custom5Text|Custom5|Custom5Run|HotkeyApp5Active|HotkeyApp5", "Green")
+    ; app 6
+    Gui, Add, Edit, ys %size3% Section ReadOnly vCustom6Text, %Custom6Split%
+    Gui, Add, Button, xs %size1% vCustom6 gCustomSelect, Select File
+    Gui, Add, Button, x+10 %size2% vCustom6Run gCustomRun, Run
+    Gui, Add, Checkbox, xs %size1% vHotkeyApp6Active Checked%HotkeyApp6Active%, App #6 Hotkey:
+    Gui, Add, Edit, x+10 %size2% vHotkeyApp6, %HotkeyApp6%
+    GroupBox("app6", "App #6", "Custom6Text|Custom6|Custom6Run|HotkeyApp6Active|HotkeyApp6", "Green")
+    ; --- Controls ---
+    Gui, Tab
+    Gui, Add, Button, x40 y+20 w120 h30 Section vUpdateCheck gUpdateCheck, Check for Updates
+    Gui, Add, Button, ys w120 h30 vKeyCodes gKeyCodes, Show Key Codes
+    Gui, Add, Button, ys w120 h30 vRestartScript gRestartScript, Restart Script
+    Gui, Add, Button, ys w120 h30 vResetConfig gResetConfig, Reset Configuration
+    Gui, Add, Button, ys w120 h30 default vUpdateHotkeys gUpdateHotkeys, Save
     return
 }
 
@@ -117,7 +130,6 @@ CustomSelect(){
     FileSelectFile, %A_GuiControl%, S3, , Select application / file
     SplitPath, %A_GuiControl%, %A_GuiControl%Split
     GuiControl, , %A_GuiControl%Text, % %A_GuiControl%Split
-    GuiControl, , %A_GuiControl%Run, % "Run " . %A_GuiControl%Split
     return
 }
 

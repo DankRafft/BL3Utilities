@@ -4,19 +4,6 @@ HotkeyOptions_TT = %HotkeyOptionsText_TT%
 AutoGame_TT .= "When checked the script automatically starts Borderlands 3 upon script start.`nYou need to save and restart the script for this to take effect."
 HotkeyQuitActive_TT .= "Set a key that automatically quits the game (only from within a running session) to desktop`nand shuts down BL3 Utilities. When unchecked the assigned hotkey does nothing."
 HotkeyQuit_TT = %HotkeyQuitActive_TT%
-; custom apps
-Custom1Text_TT .= "Shows only the file name without its full path."
-Custom1_TT .= "Select a file you want to run by hitting the Run button below. It can be an`napplication or any other file that is associated with a specific program."
-Custom2Text_TT = %Custom1Text_TT%
-Custom2_TT = %Custom1_TT%
-Custom3Text_TT = %Custom1Text_TT%
-Custom3_TT = %Custom1_TT%
-Custom4Text_TT = %Custom1Text_TT%
-Custom4_TT = %Custom1_TT%
-Custom5Text_TT = %Custom1Text_TT%
-Custom5_TT = %Custom1_TT%
-Custom6Text_TT = %Custom1Text_TT%
-Custom6_TT = %Custom1_TT%
 ; restart
 HotkeyRestartActive_TT .= "Disable and enable the Restart hotkey.`nWhen disabled the assigned hotkey does nothing."
 HotkeyRestart_TT .= "Assign a hotkey that automatically restarts your current`ngame session. Refer to the key codes list to the right."
@@ -52,3 +39,16 @@ RestartScript_TT .= "Reload the script in case something isn't working or you ma
 ResetConfig_TT .= "Reset the config to default values and restart the script."
 KeyCodes_TT .= "Open a list of all available Key Codes."
 UpdateCheck_TT .= "Check for updates to BL3 Utilities."
+; custom apps
+Loop %appLoops% {
+    If (A_Index = 1)
+        Custom1Text_TT := "Shows only the file name without its full path."
+        Custom1_TT := "Select a file you want to run by hitting the Run button below. It can be an`napplication or any other file that is associated with a specific program."
+        HotkeyApp1Active_TT := "Dis-/Enable the hotkey for execution of the custom app."
+        HotkeyApp1_TT := "Set the hotkey for app execution."
+    If (A_Index > 1)
+        Custom%A_Index%Text_TT = %Custom1Text_TT%
+        Custom%A_Index%_TT = %Custom1_TT%
+        HotkeyApp%A_Index%Active_TT = %HotkeyApp1Active_TT%
+        HotkeyApp%A_Index%_TT = %HotkeyApp1_TT%
+}

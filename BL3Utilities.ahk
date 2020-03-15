@@ -5,13 +5,20 @@ Created by Dank Rafft
 https://github.com/DankRafft/BL3Utilities
 */
 
-; global AutoHotkey functions
+; global
 #NoEnv
 #Persistent
 #SingleInstance force
 #IfWinActive ahk_exe Borderlands3.exe ; make functions only available if PoE window is frontmost
+
+version = 8
+appLoops = 6
+ini = %A_ScriptDir%\resources\BL3Uconfig.ini
+title = BL3Utilities v%version% by DankRafft
+
 #Include %A_ScriptDir%\lib\inifunctions.ahk
 #Include %A_ScriptDir%\lib\tooltips.ahk
+#Include %A_ScriptDir%\lib\GroupBox.ahk
 #Include %A_ScriptDir%\lib\gui.ahk
 
 FileEncoding , UTF-8
@@ -19,7 +26,7 @@ SendMode Input
 SetTitleMatchMode, 3
 SetWorkingDir %A_ScriptDir%
 Menu, Tray, Icon, %A_ScriptDir%\resources\tray.ico
-Menu, Tray, Tip, BL3 Utilities
+Menu, Tray, Tip, %title%
 Menu, Tray, NoStandard ; remove standard tray menu
 Menu, Tray, Add, Options, CommandOptions ; add options to tray menu at the top
 Menu, Tray, Default, Options ; make options command in tray menu the default entry
@@ -29,7 +36,6 @@ Menu, Tray, Standard ; add standard menu
 
 ;----------------------- create/read INI file
 
-ini = %A_ScriptDir%\resources\BL3Uconfig.ini
 if !FileExist(ini) {
 	resetINI()
 }
@@ -49,7 +55,7 @@ createGUI()
 return ;return to idle to prevent the script from continuing down the code
 
 CommandOptions:
-    Gui, Show,, BL3 Utilities
+    Gui, Show,, %title%
     OnMessage(0x200, "WM_MOUSEMOVE")
     processWarningFound := 0
     return
@@ -121,6 +127,16 @@ CommandAttack:
 CommandGrenade:
     while GetKeyState(HotkeyGrenade, "P") {
         SendInput {%KeyGrenade%}
-        Sleep, 100
+        Sleep, 150
+    }
+    return
+
+CommandRunApp:
+    Loop %appLoops% {
+        TempHotkey := HotkeyApp%A_Index%
+        If (TempHotkey = A_ThisHotkey) {
+            Run % Custom%A_Index%
+            Break
+        }
     }
     return

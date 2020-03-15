@@ -3,6 +3,12 @@
 └───────────────────────────────────────┘
 
 
+v8:
+introduced tabs
+the custom app config can now be found in the seond tab
+custom apps can now be started via configurable hotkey
+
+
 v7:
 two new custom app slots
 rearranged GUI

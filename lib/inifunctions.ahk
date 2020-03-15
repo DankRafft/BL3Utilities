@@ -6,12 +6,11 @@
 	defaultProfile .= "HotkeyQuitActive=1`n"
 	defaultProfile .= "HotkeyQuit=F12`n"
 	defaultProfile .= "[CustomApps]`n"
-	defaultProfile .= "Custom1=`n"
-	defaultProfile .= "Custom2=`n"
-	defaultProfile .= "Custom3=`n"
-	defaultProfile .= "Custom4=`n"
-	defaultProfile .= "Custom5=`n"
-	defaultProfile .= "Custom6=`n"
+    Loop %appLoops% {
+        defaultProfile .= "Custom" . A_Index . "=`n"
+        defaultProfile .= "HotkeyApp" . A_Index . "Active=1`n"
+        defaultProfile .= "HotkeyApp" . A_Index . "=Numpad" . A_Index . "`n"
+    }
 	defaultProfile .= "[RestartGame]`n"
 	defaultProfile .= "HotkeyRestartActive=1`n"
 	defaultProfile .= "HotkeyRestart=F8`n"
@@ -48,12 +47,11 @@ UpdateHotkeys:
 	updsettings .= "HotkeyQuitActive=" . HotkeyQuitActive . "`n"
 	updsettings .= "HotkeyQuit=" . HotkeyQuit . "`n"
 	updsettings .= "[CustomApps]`n"
-	updsettings .= "Custom1=" . Custom1 . "`n"
-	updsettings .= "Custom2=" . Custom2 . "`n"
-	updsettings .= "Custom3=" . Custom3 . "`n"
-	updsettings .= "Custom4=" . Custom4 . "`n"
-	updsettings .= "Custom5=" . Custom5 . "`n"
-	updsettings .= "Custom6=" . Custom6 . "`n"
+    Loop %appLoops% {
+        updsettings .= "Custom" . A_Index . "=" . Custom%A_Index% . "`n"
+        updsettings .= "HotkeyApp" . A_Index . "Active=" . HotkeyApp%A_Index%Active . "`n"
+        updsettings .= "HotkeyApp" . A_Index . "=" . HotkeyApp%A_Index% . "`n"
+    }
 	updsettings .= "[RestartGame]`n"
 	updsettings .= "HotkeyRestartActive=" . HotkeyRestartActive . "`n"
 	updsettings .= "HotkeyRestart=" . HotkeyRestart . "`n"
@@ -99,17 +97,20 @@ readFromFile(){
 		Hotkey, % HotkeyAttack, CommandAttack, Off
 	If HotkeyGrenade
 		Hotkey, % HotkeyGrenade, CommandGrenade, Off
+    Loop %appLoops% {
+        If HotkeyApp%A_Index%
+            Hotkey, % HotkeyApp%A_Index%, CommandRunApp, Off
+    }
     ; then read the settings from the INI
 	IniRead, HotkeyOptions, %ini%, General, HotkeyOptions, %A_Space%
 	IniRead, AutoGame, %ini%, General, AutoGame
 	IniRead, HotkeyQuitActive, %ini%, General, HotkeyQuitActive
 	IniRead, HotkeyQuit, %ini%, General, HotkeyQuit, %A_Space%
-	IniRead, Custom1, %ini%, CustomApps, Custom1, %A_Space%
-	IniRead, Custom2, %ini%, CustomApps, Custom2, %A_Space%
-	IniRead, Custom3, %ini%, CustomApps, Custom3, %A_Space%
-	IniRead, Custom4, %ini%, CustomApps, Custom4, %A_Space%
-	IniRead, Custom5, %ini%, CustomApps, Custom5, %A_Space%
-	IniRead, Custom6, %ini%, CustomApps, Custom6, %A_Space%
+    Loop %appLoops% {
+        IniRead, Custom%A_Index%, %ini%, CustomApps, Custom%A_Index%, %A_Space%
+        IniRead, HotkeyApp%A_Index%Active, %ini%, CustomApps, HotkeyApp%A_Index%Active, %A_Space%
+        IniRead, HotkeyApp%A_Index%, %ini%, CustomApps, HotkeyApp%A_Index%, %A_Space%
+    }
 	IniRead, HotkeyRestartActive, %ini%, RestartGame, HotkeyRestartActive
 	IniRead, HotkeyRestart, %ini%, RestartGame, HotkeyRestart, %A_Space%
 	IniRead, DelayKeys, %ini%, RestartGame, DelayKeys
@@ -143,4 +144,8 @@ readFromFile(){
 		Hotkey, % HotkeyAttack, CommandAttack, On
 	If HotkeyGrenade && HotkeyGrenadeActive
 		Hotkey, % HotkeyGrenade, CommandGrenade, On
+    Loop %appLoops% {
+        If HotkeyApp%A_Index% && HotkeyApp%A_Index%Active
+            Hotkey, % HotkeyApp%A_Index%, CommandRunApp, On
+    }
 }
