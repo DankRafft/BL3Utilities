@@ -22,4 +22,5 @@ Improve Borderlands 3 with some quality of life features. Tired of pressing mult
 7. Hit Save.
 8. Enjoy the game.
 
-![](https://github.com/DankRafft/BL3Utilities/blob/master/img/gui.png)
+![](https://github.com/DankRafft/BL3Utilities/blob/master/img/gui1.png)
+![](https://github.com/DankRafft/BL3Utilities/blob/master/img/gui2.png)
