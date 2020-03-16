@@ -2,6 +2,7 @@
 HotkeyOptionsText_TT := "Assign a hotkey that opens this options GUI by left-clicking into the dialogue box`nand hit any key or combination of keys. Refer to the key codes list to the right."
 HotkeyOptions_TT = %HotkeyOptionsText_TT%
 AutoGame_TT .= "When checked the script automatically starts Borderlands 3 upon script start.`nYou need to save and restart the script for this to take effect."
+Steam_TT .= "Check this if you're running the Steam version of Borderlands 3. It controls some aspects of the script`nthat differ from the Epic version, including Auto-Start and Restart Game Session."
 HotkeyQuitActive_TT .= "Set a key that automatically quits the game (only from within a running session) to desktop`nand shuts down BL3 Utilities. When unchecked the assigned hotkey does nothing."
 HotkeyQuit_TT = %HotkeyQuitActive_TT%
 ; restart

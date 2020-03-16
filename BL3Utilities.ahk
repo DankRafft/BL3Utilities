@@ -45,7 +45,12 @@ ReadFromFile()
 ;----------------------- auto start game
 
 If (AutoGame = 1) and !WinExist("ahk_exe Borderlands3.exe") {
-    Run com.epicgames.launcher://apps/Catnip?action=launch&silent=true
+    If (Steam = 1) {
+        Run steam://rungameid/397540
+    }
+    Else {
+        Run com.epicgames.launcher://apps/Catnip?action=launch&silent=true
+    }
 }
 
 
@@ -85,9 +90,17 @@ CommandRestartGame:
 	BlockInput On
 	SendInput {Esc}
 	Sleep, %DelayKeys%
-	Loop 4 {
-        SendInput {Down}
-        Sleep, %DelayKeys%
+    If (Steam = 1) {
+        Loop 5 {
+            SendInput {Down}
+            Sleep, %DelayKeys%
+        }
+    }
+    Else {
+        Loop 4 {
+            SendInput {Down}
+            Sleep, %DelayKeys%
+        }
     }
 	SendInput {Enter}
 	Sleep, %DelayKeys%

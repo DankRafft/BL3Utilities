@@ -3,6 +3,7 @@
 	defaultProfile := "[General]`n"
 	defaultProfile .= "HotkeyOptions=F10`n"
 	defaultProfile .= "AutoGame=0`n"
+	defaultProfile .= "Steam=0`n"
 	defaultProfile .= "HotkeyQuitActive=1`n"
 	defaultProfile .= "HotkeyQuit=F12`n"
 	defaultProfile .= "[CustomApps]`n"
@@ -44,6 +45,7 @@ UpdateHotkeys:
 	updsettings := "[General]`n"
 	updsettings .= "HotkeyOptions=" . HotkeyOptions . "`n"
 	updsettings .= "AutoGame=" . AutoGame . "`n"
+	updsettings .= "Steam=" . Steam . "`n"
 	updsettings .= "HotkeyQuitActive=" . HotkeyQuitActive . "`n"
 	updsettings .= "HotkeyQuit=" . HotkeyQuit . "`n"
 	updsettings .= "[CustomApps]`n"
@@ -104,6 +106,7 @@ readFromFile(){
     ; then read the settings from the INI
 	IniRead, HotkeyOptions, %ini%, General, HotkeyOptions, %A_Space%
 	IniRead, AutoGame, %ini%, General, AutoGame
+	IniRead, Steam, %ini%, General, Steam
 	IniRead, HotkeyQuitActive, %ini%, General, HotkeyQuitActive
 	IniRead, HotkeyQuit, %ini%, General, HotkeyQuit, %A_Space%
     Loop %appLoops% {

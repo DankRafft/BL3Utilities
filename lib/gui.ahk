@@ -15,9 +15,10 @@
     Gui, Add, Text, %size1% 0x200 Section vHotkeyOptionsText gTooltip, User Interface Hotkey:
     Gui, Add, Edit, ys %size2% vHotkeyOptions, %HotkeyOptions%
     Gui, Add, Checkbox, xs %size1% vAutoGame Checked%AutoGame%, BL3 Auto-Start
+    Gui, Add, Checkbox, x+10 %size2% vSteam Checked%Steam%, Steam
     Gui, Add, Checkbox, xs %size1% vHotkeyQuitActive Checked%HotkeyQuitActive%, Quit Hotkey:
     Gui, Add, Edit, x+10 %size2% vHotkeyQuit, %HotkeyQuit%
-    GroupBox("game", "Script and UI Options", "HotkeyOptionsText|HotkeyOptions|AutoGame|HotkeyQuitActive|HotkeyQuit", "Green")
+    GroupBox("game", "Script and UI Options", "HotkeyOptionsText|HotkeyOptions|AutoGame|Steam|HotkeyQuitActive|HotkeyQuit", "Green")
     ; slide
     Gui, Add, Checkbox, ys %size1% Section vHotkeySlideActive Checked%HotkeySlideActive%, Macro Hotkey:
     Gui, Add, Edit, ys %size2% vHotkeySlide, %HotkeySlide%
