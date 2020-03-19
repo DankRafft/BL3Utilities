@@ -3,6 +3,11 @@
 └───────────────────────────────────────┘
 
 
+v9:
+added compatibility for Steam version
+check the Steam option in the UI for Auto-Start and Restart Game Session to work with the Steam version
+
+
 v8:
 introduced tabs
 the custom app config can now be found in the second tab

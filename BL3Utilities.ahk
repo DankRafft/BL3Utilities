@@ -11,7 +11,7 @@ https://github.com/DankRafft/BL3Utilities
 #SingleInstance force
 #IfWinActive ahk_exe Borderlands3.exe ; make functions only available if PoE window is frontmost
 
-version = 8
+version = 9
 appLoops = 6
 ini = %A_ScriptDir%\resources\BL3Uconfig.ini
 title = BL3Utilities v%version% by DankRafft
