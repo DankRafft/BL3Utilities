@@ -72,9 +72,17 @@ CommandQuit:
     BlockInput On
 	SendInput {Esc}
 	Sleep, %DelayKeys%
-	Loop 4 {
-        SendInput {Down}
-        Sleep, %DelayKeys%
+    If (Steam = 1) {
+        Loop 5 {
+            SendInput {Down}
+            Sleep, %DelayKeys%
+        }
+    }
+    Else {
+        Loop 4 {
+            SendInput {Down}
+            Sleep, %DelayKeys%
+        }
     }
 	SendInput {Enter}
 	Sleep, %DelayKeys%
